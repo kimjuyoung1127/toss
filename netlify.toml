@@ -1,0 +1,25 @@
+[build]
+  # The directory containing the build output
+  publish = "frontend/dist"
+  # The command to build the application
+  command = "cd frontend && npm run build"
+
+[dev]
+  # Configuration for local development with Netlify CLI
+  command = "cd frontend && npm run dev"
+  targetPort = 5173
+  # The port that the Netlify dev server will run on
+  port = 8888
+
+# Redirect all routes to index.html for client-side routing (important for SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Set up environment variables if needed
+[template.environment]
+  VITE_API_URL = "API URL for your backend service"
+
+[functions]
+  directory = "netlify/functions"
