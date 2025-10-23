@@ -2,7 +2,7 @@
   # The directory containing the build output
   publish = "frontend/dist"
   # The command to build the application
-  command = "cd frontend && npm run build"
+  command = "cd frontend && npm ci && npm run build"
 
 [dev]
   # Configuration for local development with Netlify CLI
@@ -23,3 +23,7 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Ensure devDependencies are installed for the build
+[context.production.environment]
+  NODE_ENV = "development"
